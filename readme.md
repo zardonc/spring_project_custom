@@ -12,11 +12,15 @@
 ##### web.xml
 
 > * servlet
-> * Dispatcher
+> * DispatcherServlet
 > * 设定 init-param： contextConfigLocation = applicationContext.properties
 > * servlet-mapping
 > * 设定 url-pattern： /*
 > * 配置 Annotation： @XController @XService @XAutowired @XRequestMapping @Bean @Component
+> * * Listener监听器：观察者模式(servlet规范)
+>  * Filter: 责任链模式(servlet规范)
+>  * Interceptor: 责任链模式(Spring自身组件，可使用spring中资源，对象)
+
 ***
 ### 初始化
 
@@ -27,7 +31,7 @@
 > * 扫描相关类: scan-package = "com.example"
 > * 创建实例保存至容器
 > > Bean Scope: Singleton, 通过三级缓存解决循环依赖<br/>
-> > 　　　　　　Prototype，每次从容器中获得新对象，循环依赖报：BeanCurrentlylnCreationException
+> > 　　　　　　Prototype，每次从容器中获得新对象，循环依赖报：BeanCurrentlyInCreationException
 
 ##### DI
 
