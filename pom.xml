@@ -11,6 +11,7 @@
     <modules>
         <module>springc_example</module>
         <module>springc_framework</module>
+        <module>springc_common</module>
     </modules>
 
     <properties>
