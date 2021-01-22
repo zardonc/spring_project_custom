@@ -6,7 +6,16 @@
          version="2.4">
     <display-name>Custom Spring Application</display-name>
 
-    <!--contextConfigLocation-->
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>classpath:log4j2.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+
+
 
     <servlet>
         <servlet-name>mvc</servlet-name>
