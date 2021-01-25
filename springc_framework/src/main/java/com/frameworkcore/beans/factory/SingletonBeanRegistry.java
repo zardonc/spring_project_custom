@@ -1,6 +1,5 @@
 package com.frameworkcore.beans.factory;
 
-import com.frameworkcore.beans.factory.ObjectFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
