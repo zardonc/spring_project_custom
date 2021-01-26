@@ -17,6 +17,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <apachecomm.ver>3.11</apachecomm.ver>
+        <reflect.ver>0.9.12</reflect.ver>
     </properties>
 
     <dependencies>
@@ -40,6 +41,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${apachecomm.ver}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${reflect.ver}</version>
         </dependency>
     </dependencies>
 
