@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-// 三级缓存代码
+// 三级缓存代码, Bean的容器
 public class SingletonBeanRegistry {
     private static final Logger log = LogManager.getLogger("SingletonBeanRegistry.class");
 

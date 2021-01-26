@@ -6,6 +6,7 @@ import com.frameworkcore.beans.factory.SingletonBeanRegistry;
 import com.frameworkcore.beans.factory.config.BeanDefinition;
 import com.frameworkcore.beans.factory.config.BeanPostProcessor;
 import com.frameworkcore.exception.BeansException;
+import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -124,11 +125,11 @@ public class DefaultBeanFactory extends SingletonBeanRegistry implements BeanFac
 
     @Override
     public <T> T getBean(Class<T> requireType) {
-        return null;
+        return (T) getBean(StringUtils.uncapitalize(requireType.getSimpleName()));
     }
 
     @Override
     public boolean containsBean(String beanName) {
-        return this.containSingletong(beanName) || this.containsBean(beanName);
+        return this.containSingletong(beanName) || this.containsBeanDefinition(beanName);
     }
 }
