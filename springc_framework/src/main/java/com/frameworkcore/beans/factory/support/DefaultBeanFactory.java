@@ -1,5 +1,6 @@
 package com.frameworkcore.beans.factory.support;
 
+import com.frameworkcore.annotation.Resource;
 import com.frameworkcore.beans.factory.BeanFactory;
 import com.frameworkcore.beans.factory.SingletonBeanRegistry;
 import com.frameworkcore.beans.factory.config.BeanDefinition;
@@ -16,7 +17,8 @@ import java.util.concurrent.ConcurrentHashMap;
 // BeanFactory的实现, 作为ApplicationContext的成员变量
 
 /**
- * 调用链条 getBean() 是入口，其调用链为：getBean()->doGetBean()获取Bean如果不存在则创建->doCreateBean()->
+ * 调用链条 getBean() 是入口，其调用链为：
+ * getBean()->doGetBean()获取Bean如果不存在则创建->doCreateBean()->
  * createBeanInstance()创建 Bean 的实例->populateBean()Bean属性的自动装配。
  */
 public class DefaultBeanFactory extends SingletonBeanRegistry implements BeanFactory {
@@ -97,6 +99,7 @@ public class DefaultBeanFactory extends SingletonBeanRegistry implements BeanFac
         }
     }
 
+    // 参考源码populateBean -> autowireByName 首先获取非简单类型属性的名称，然后再根据名称到容器中获取相应的 bean 实例，最后再将获取到的 bean 添加到属性列表
     private void populateBean(String beanName, BeanDefinition beanDefinition, Object beanInstance) {
         Field[] beanFields = beanDefinition.getClass().getDeclaredFields();
         try {
