@@ -73,6 +73,7 @@ public class DefaultBeanFactory extends SingletonBeanRegistry implements BeanFac
         Object bean = createBeanInstance(beanName, beanDefinition);
         boolean earlySingletonExposure = isSingletonCurrentlyInCreation(beanName);
         if (earlySingletonExposure) {
+            // 反射创建bean实例后, 如果这个bean是单例bean&&允许循环依赖&&当前bean正在创建，那么将会调用addSingletonFactory加入三级缓存
             addSingletonFactory(beanName, () -> bean);
         }
         Object exposedObj = bean;

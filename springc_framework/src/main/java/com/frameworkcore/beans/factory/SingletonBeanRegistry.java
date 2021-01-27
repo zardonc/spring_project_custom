@@ -10,6 +10,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 // 三级缓存代码, Bean的容器
+// 第一级放的是完全初始化完成的可以直接使用的对象
+// 第二级放的是经过后置处理器处理（即代理过）的对象
+// 第三级放的是刚实例化好没有经过后置处理器处理（即没有被代理过）的对象。
 public class SingletonBeanRegistry {
     private static final Logger log = LogManager.getLogger("SingletonBeanRegistry.class");
 
