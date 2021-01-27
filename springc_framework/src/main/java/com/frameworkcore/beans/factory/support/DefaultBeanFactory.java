@@ -1,6 +1,6 @@
 package com.frameworkcore.beans.factory.support;
 
-import com.frameworkcore.annotation.Resource;
+import com.frameworkcore.beans.annotation.Resource;
 import com.frameworkcore.beans.factory.BeanFactory;
 import com.frameworkcore.beans.factory.SingletonBeanRegistry;
 import com.frameworkcore.beans.factory.config.BeanDefinition;

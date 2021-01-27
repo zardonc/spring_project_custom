@@ -1,6 +1,6 @@
 package com.frameworkcore.beans.factory.config;
 
-import com.frameworkcore.annotation.Component;
+import com.frameworkcore.beans.annotation.Component;
 import com.frameworkcore.beans.factory.support.DefaultBeanFactory;
 import com.util.ReflectUtils;
 import org.apache.commons.lang3.StringUtils;

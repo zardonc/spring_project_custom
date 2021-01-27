@@ -1,4 +1,4 @@
-package com.frameworkcore.annotation;
+package com.frameworkcore.beans.annotation;
 
 import java.lang.annotation.*;
 
