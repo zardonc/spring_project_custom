@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Set;
 
+// 参考源码XmlBeanDefinitionReader，初始化ApplicationContext时读取所有bean转化为BeanDefinition
 public class ComponentReader {
     public void readBeanDefinition(DefaultBeanFactory beanFactory) {
         Set<Class<?>> componentSet = ReflectUtils.getAllClass(Component.class);
