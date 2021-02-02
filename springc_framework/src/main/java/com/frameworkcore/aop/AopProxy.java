@@ -1,14 +1,17 @@
 package com.frameworkcore.aop;
 
-import net.sf.cglib.proxy.MethodInterceptor;
-import net.sf.cglib.proxy.MethodProxy;
+import com.frameworkcore.aop.support.DefaultBeanProxy;
+import net.sf.cglib.proxy.Enhancer;
 
-import java.lang.reflect.Method;
+public class AopProxy {
+    private DefaultBeanProxy beanProxy = new DefaultBeanProxy();
 
-public class AopProxy implements MethodInterceptor {
-
-    @Override
-    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        return null;
+    // 获取代理类
+    public Object getProxy(Class<?> clz) {
+        Enhancer enhancer = new Enhancer();
+        // 设置哪个类需要代理
+        enhancer.setSuperclass(clz);
+        enhancer.setCallback(beanProxy);
+        return enhancer.create();
     }
 }
