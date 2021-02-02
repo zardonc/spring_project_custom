@@ -3,6 +3,7 @@ package com.frameworkcore.beans;
 import com.frameworkcore.beans.factory.BeanFactory;
 import com.frameworkcore.beans.factory.config.ComponentReader;
 import com.frameworkcore.beans.factory.support.DefaultBeanFactory;
+import com.frameworkcore.beans.processor.DefaultAdvisorProxyCreator;
 
 /**
  * 在BeanFactory的基础上构建，实现了 BeanFactory。
@@ -12,11 +13,25 @@ import com.frameworkcore.beans.factory.support.DefaultBeanFactory;
  */
 public class ApplicationContext implements BeanFactory {
 
-    private BeanFactory beanFactory = new DefaultBeanFactory();
+    private DefaultBeanFactory beanFactory = new DefaultBeanFactory();
+
+    public ApplicationContext() {
+        loadBeanDefinitions(beanFactory);
+        postProcessBeanFactory(beanFactory);
+        finishBeanFactoryInitialization(beanFactory);
+    }
 
     private void loadBeanDefinitions(DefaultBeanFactory defaultBeanFactory) {
         ComponentReader componentReader = new ComponentReader();
         componentReader.readBeanDefinition(defaultBeanFactory);
+    }
+
+    private void postProcessBeanFactory(DefaultBeanFactory beanFactory) {
+        beanFactory.addBeanProcessor(new DefaultAdvisorProxyCreator());
+    }
+
+    public void finishBeanFactoryInitialization(DefaultBeanFactory beanFactory) {
+        beanFactory.preInstantiateSingleton();
     }
 
     @Override
@@ -34,7 +49,7 @@ public class ApplicationContext implements BeanFactory {
         return getBeanFactory().containsBean(name);
     }
 
-    public BeanFactory getBeanFactory() {
+    public DefaultBeanFactory getBeanFactory() {
         return beanFactory;
     }
 }
